@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anaëlle Havret - Portfolio Étudiante en Modélisation & Calculs Fluides et Structures</title>
+    
+    <!-- Polices modernes & Icônes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS configuré avec une palette Noir & Bleu pur / Cyan glacial -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        tech: {
+                            black: '#020617',       /* Fond ultra sombre */
+                            dark: '#0f172a',        /* Panneaux ardoise sombre */
+                            medium: '#1e293b',      /* Frontières et boutons neutres */
+                            blue: '#2563eb',        /* Bleu électrique principal */
+                            cyan: '#38bdf8',        /* Cyan fluide glacial */
+                            ice: '#f8fafc',         /* Blanc pour le texte contrasté */
+                            textMuted: '#94a3b8',   /* Texte secondaire plus lisible */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617;
+            color: #f1f5f9;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: techFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes techFadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Barre de défilement discrète */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+
+        /* Grille technique de fond */
+        .tech-grid {
+            background-size: 50px 50px;
+            background-image: linear-gradient(to right, rgba(37, 99, 235, 0.015) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(37, 99, 235, 0.015) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col md:flex-row overflow-x-hidden tech-grid">
+
+    <!-- BARRE LATÉRALE DE NAVIGATION (SIDEBAR) -->
+    <aside class="w-full md:w-80 bg-tech-dark/95 flex flex-col justify-between border-b md:border-b-0 md:border-r border-slate-800/80 md:h-screen md:sticky md:top-0 z-20 backdrop-blur-md">
+        
+        <!-- En-tête de la Sidebar -->
+        <div class="p-6 flex-grow overflow-y-auto">
+            <div class="flex items-center gap-3 mb-6">
+                <!-- Logo technique ou Photo de profil -->
+                <img src="photo_cv.jpg" alt="Anaëlle Havret" class="w-12 h-12 rounded-full border-2 border-tech-cyan object-cover shadow-md shadow-tech-cyan/10">
+                <div>
+                    <h1 class="font-display font-bold text-base tracking-wide text-white">Anaëlle Havret</h1>
+                    <p class="text-[10px] text-tech-cyan font-mono tracking-wider uppercase">Fluides & Structures (MOCA)</p>
+                </div>
+            </div>
+
+            <!-- Indicateur de recherche active -->
+            <div class="bg-tech-black rounded-xl p-4 border border-tech-blue/15 text-xs mb-6">
+                <div class="flex items-center justify-between gap-2 mb-1.5">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-tech-cyan animate-pulse"></span>
+                        <span class="font-semibold text-slate-200">Recherche de Stage</span>
+                    </div>
+                </div>
+                <p class="text-tech-textMuted leading-relaxed mb-2 text-[11px]">Modélisation d'écoulements biphasiques & comportement de carène.</p>
+                <div class="text-[10px] font-mono text-tech-cyan/80 flex items-center gap-1 border-t border-slate-800/40 pt-2">
+                    <i class="fa-solid fa-location-dot"></i> Carqueiranne / Toulon, France
+                </div>
+            </div>
+
+            <!-- Menu de navigation interactif -->
+            <nav class="space-y-1.5">
+                <button onclick="switchTab('accueil')" id="btn-accueil" class="tab-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-lg text-xs font-medium tracking-wide transition duration-150 text-white bg-tech-blue/20 border-l-2 border-tech-blue">
+                    <i class="fa-solid fa-circle-nodes text-tech-cyan w-4"></i> Accueil & Profil
+                </button>
+                <button onclick="switchTab('competences')" id="btn-competences" class="tab-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-lg text-xs font-medium tracking-wide transition duration-150 text-tech-textMuted hover:text-white hover:bg-tech-medium/30">
+                    <i class="fa-solid fa-gauge-high w-4"></i> Compétences
+                </button>
+                <button onclick="switchTab('projets')" id="btn-projets" class="tab-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-lg text-xs font-medium tracking-wide transition duration-150 text-tech-textMuted hover:text-white hover:bg-tech-medium/30">
+                    <i class="fa-solid fa-wave-square w-4"></i> Projets
+                </button>
+                <button onclick="switchTab('stage')" id="btn-stage" class="tab-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-lg text-xs font-medium tracking-wide transition duration-150 text-tech-textMuted hover:text-white hover:bg-tech-medium/30">
+                    <i class="fa-solid fa-anchor w-4"></i> Stages
+                </button>
+                <button onclick="switchTab('contact')" id="btn-contact" class="tab-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-lg text-xs font-medium tracking-wide transition duration-150 text-tech-textMuted hover:text-white hover:bg-tech-medium/30">
+                    <i class="fa-solid fa-envelope w-4"></i> Contact
+                </button>
+            </nav>
+        </div>
+
+        <!-- Bas de la barre latérale -->
+        <div class="p-6 border-t border-slate-800/80 bg-tech-black/50 shrink-0">
+            <!-- Bouton CV direct -->
+            <a href="CV_Anaelle.pdf" target="_blank" class="w-full flex items-center justify-center gap-2 bg-tech-blue hover:bg-blue-600 text-white text-xs font-semibold py-3 px-4 rounded-lg shadow-md shadow-tech-blue/10 transition duration-150 mb-4">
+                <i class="fa-solid fa-file-pdf"></i> Télécharger le CV (PDF)
+            </a>
+
+            <!-- Réseaux Sociaux -->
+            <div class="flex justify-center gap-5 text-slate-500">
+                <a href="https://github.com/uneananash" target="_blank" class="hover:text-tech-cyan transition duration-150 text-base">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="hover:text-tech-cyan transition duration-150 text-base">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <span class="text-[10px] self-center font-mono text-slate-600">v3.4.0</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ZONE DE CONTENU PRINCIPALE (A DROITE) -->
+    <main class="flex-grow p-6 md:p-12 overflow-y-auto max-w-7xl mx-auto w-full">
+        
+        <!-- ================= ONGLET 1 : ACCUEIL & PROFIL ================= -->
+        <section id="accueil" class="tab-content active space-y-10">
+            <!-- Phrase d'accroche technique -->
+            <div class="space-y-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-tech-blue/10 border border-tech-blue/30 rounded-full text-[10px] font-mono text-tech-cyan uppercase tracking-wider">
+                    <i class="fa-solid fa-graduation-cap"></i> Modélisation & Calculs Fluides et Structures (MOCA)
+                </div>
+                <h2 class="font-display font-bold text-3xl md:text-5xl text-white leading-tight">
+                    Étudiante en Modélisation & <br>
+                    <span class="text-tech-cyan">Calculs Fluides et Structures</span>.
+                </h2>
+                <p class="text-sm md:text-base text-slate-300 max-w-3xl leading-relaxed font-light">
+                    Actuellement étudiante en école d'ingénieur à **SeaTech Toulon** au sein du parcours **MOCA**, je me spécialise en mécanique des fluides numérique (CFD), en analyse structurelle et en modélisation physique. J'aime utiliser des codes de calcul et des outils de simulation pour comprendre et optimiser le comportement de systèmes hydrodynamiques et mécaniques.
+                </p>
+            </div>
+
+            <!-- SECTION PARCOURS & FORMATION -->
+            <div class="space-y-4">
+                <h3 class="font-display font-bold text-lg text-white border-b border-slate-800/80 pb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-timeline text-tech-cyan text-sm"></i> Mon Parcours Académique
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Étape 1 : SeaTech -->
+                    <div class="p-5 bg-tech-dark rounded-xl border border-slate-800/60 relative flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-mono text-tech-cyan uppercase tracking-wider">2024 - 2027</span>
+                            <h4 class="font-display font-bold text-sm text-white mt-1">Diplôme d'Ingénieur</h4>
+                            <p class="text-[11px] text-tech-textMuted mt-1">SeaTech (Université de Toulon)</p>
+                            <p class="text-[11px] text-slate-300 mt-2 leading-relaxed">
+                                Parcours MOCA. Mécanique des fluides et solides, méthodes numériques, éléments finis, programmation scientifique.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800/40 text-[10px] text-tech-cyan font-mono">Option : Architecture navale & CAO Rhino</div>
+                    </div>
+                    <!-- Étape 2 : NTNU Norvège -->
+                    <div class="p-5 bg-tech-dark rounded-xl border border-tech-blue/20 relative flex flex-col justify-between bg-gradient-to-br from-tech-dark to-tech-blue/5">
+                        <div>
+                            <span class="text-[10px] font-mono text-tech-cyan uppercase tracking-wider">Automne 2026</span>
+                            <h4 class="font-display font-bold text-sm text-white mt-1">Semestre d'Échange</h4>
+                            <p class="text-[11px] text-tech-textMuted mt-1">NTNU Trondheim (Norvège) 🇳🇴</p>
+                            <p class="text-[11px] text-slate-300 mt-2 leading-relaxed">
+                                Mobilité internationale au sein de l'Université Norvégienne de Sciences et de Technologie pour approfondir mes compétences en milieu arctique et hydrodynamique.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800/40 text-[10px] text-tech-cyan font-mono">Semestre universitaire validé</div>
+                    </div>
+                    <!-- Étape 3 : CPGE -->
+                    <div class="p-5 bg-tech-dark rounded-xl border border-slate-800/60 relative flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-mono text-tech-cyan uppercase tracking-wider">2022 - 2024</span>
+                            <h4 class="font-display font-bold text-sm text-white mt-1">Classe Préparatoire (CPGE)</h4>
+                            <p class="text-[11px] text-tech-textMuted mt-1">Lycée Angellier, Dunkerque</p>
+                            <p class="text-[11px] text-slate-300 mt-2 leading-relaxed">
+                                Programme intensif de préparation aux concours des grandes écoles. Spécialité Physique, Mathématiques et Sciences de l'Ingénieur.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-800/40 text-[10px] text-tech-cyan font-mono">Baccalauréat mention TB (2022)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LOGOS PARTENAIRES ET ECOLES (PLACEHOLDERS) -->
+            <div class="p-6 bg-tech-dark rounded-xl border border-slate-800/80">
+                <h3 class="font-display font-bold text-xs text-slate-400 uppercase tracking-widest mb-4 text-center">Écoles, Laboratoires & Entreprises partenaires</h3>
+                <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10 opacity-70">
+                    <!-- Logo SeaTech -->
+                    <div class="px-4 py-2 border border-slate-800 rounded bg-tech-black/60 text-xs font-mono text-center min-w-[120px]">
+                        <span class="text-white block font-bold">SeaTech</span>
+                        <span class="text-[9px] text-tech-cyan">Toulon</span>
+                    </div>
+                    <!-- Logo NTNU -->
+                    <div class="px-4 py-2 border border-slate-800 rounded bg-tech-black/60 text-xs font-mono text-center min-w-[120px]">
+                        <span class="text-white block font-bold">NTNU</span>
+                        <span class="text-[9px] text-tech-cyan">Trondheim 🇳🇴</span>
+                    </div>
+                    <!-- Logo Westfjords -->
+                    <div class="px-4 py-2 border border-slate-800 rounded bg-tech-black/60 text-xs font-mono text-center min-w-[120px]">
+                        <span class="text-white block font-bold">UW</span>
+                        <span class="text-[9px] text-tech-cyan">Islande 🇮🇸</span>
+                    </div>
+                    <!-- Logo Espace Tourville -->
+                    <div class="px-4 py-2 border border-slate-800 rounded bg-tech-black/60 text-xs font-mono text-center min-w-[120px]">
+                        <span class="text-white block font-bold">E. Tourville</span>
+                        <span class="text-[9px] text-tech-cyan">Chantier Naval</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCHÉMA TECHNIQUE D'HYDRODYNAMIQUE STATIQUE -->
+            <div class="p-6 bg-tech-dark rounded-xl border border-slate-800/80">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-display font-bold text-xs text-slate-200 uppercase tracking-widest flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-tech-cyan"></span> Schématique d'écoulement vectoriel (CFD)
+                    </h3>
+                    <span class="text-[10px] font-mono text-tech-textMuted">Modèle : Hydrofoil NACA 0012</span>
+                </div>
+                
+                <div class="w-full bg-tech-black rounded-lg border border-slate-900 p-4 flex items-center justify-center">
+                    <svg viewBox="0 0 800 200" class="w-full max-h-48 text-tech-cyan/20">
+                        <!-- Grille de référence -->
+                        <g stroke="rgba(37, 99, 235, 0.05)" stroke-width="0.5">
+                            <line x1="0" y1="50" x2="800" y2="50" />
+                            <line x1="0" y1="100" x2="800" y2="100" />
+                            <line x1="0" y1="150" x2="800" y2="150" />
+                            <line x1="200" y1="0" x2="200" y2="200" />
+                            <line x1="400" y1="0" x2="400" y2="200" />
+                            <line x1="600" y1="0" x2="600" y2="200" />
+                        </g>
+
+                        <!-- Lignes de courant (Streamlines) bleues -->
+                        <path d="M 0,30 Q 200,30 350,20 T 800,40" fill="none" stroke="#2563eb" stroke-dasharray="3,3" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 0,60 Q 200,60 350,45 T 800,80" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity="0.6"/>
+                        <path d="M 0,90 Q 200,90 330,75 T 800,110" fill="none" stroke="#0ea5e9" stroke-width="2" opacity="0.9"/>
+                        
+                        <!-- Profil de l'aile (NACA) -->
+                        <path d="M 300,100 C 330,80 430,75 480,100 C 430,125 330,120 300,100 Z" fill="#0f172a" stroke="#0ea5e9" stroke-width="2.5" />
+                        
+                        <!-- Vecteurs de force -->
+                        <line x1="390" y1="87" x2="390" y2="40" stroke="#0ea5e9" stroke-width="2" marker-end="url(#arrow)" />
+                        <text x="400" y="50" fill="#0ea5e9" font-family="monospace" font-size="10">Portance (Fl)</text>
+                        
+                        <line x1="390" y1="87" x2="450" y2="87" stroke="#2563eb" stroke-width="2" />
+                        <text x="455" y="91" fill="#2563eb" font-family="monospace" font-size="10">Traînée (Fd)</text>
+
+                        <!-- Lignes de courant basses -->
+                        <path d="M 0,120 Q 200,120 350,135 T 800,130" fill="none" stroke="#0ea5e9" stroke-width="1.5" opacity="0.6"/>
+                        <path d="M 0,150 Q 200,150 350,165 T 800,160" fill="none" stroke="#2563eb" stroke-dasharray="3,3" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M 0,180 Q 200,180 350,190 T 800,185" fill="none" stroke="#2563eb" stroke-width="1" opacity="0.2"/>
+
+                        <!-- Définition de la tête de flèche -->
+                        <defs>
+                            <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#0ea5e9"/>
+                            </marker>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ONGLET 2 : COMPÉTENCES CFD & FEA ================= -->
+        <section id="competences" class="tab-content space-y-8">
+            <div>
+                <h2 class="font-display font-bold text-2xl text-white mb-1.5">Matrice de Compétences</h2>
+                <p class="text-xs text-tech-textMuted">Outils numériques, langages et méthodes que j'applique dans mes travaux académiques et personnels.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Bloc 1: CFD -->
+                <div class="p-5 bg-tech-dark rounded-xl border border-slate-800/80 space-y-4">
+                    <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                        <i class="fa-solid fa-wind text-tech-cyan text-base"></i>
+                        <h3 class="font-display font-bold text-sm text-white uppercase tracking-wider">Mécanique des Fluides</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between text-[11px] mb-1 font-mono"><span class="text-slate-300">OpenFOAM</span><span class="text-tech-cyan">Avancé</span></div>
+                            <div class="w-full h-1 bg-tech-black rounded-full overflow-hidden"><div class="h-1 bg-tech-blue rounded-full" style="width: 80%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[11px] mb-1 font-mono"><span class="text-slate-300">Flow-3D</span><span class="text-tech-cyan">Pratique</span></div>
+                            <div class="w-full h-1 bg-tech-black rounded-full overflow-hidden"><div class="h-1 bg-tech-blue rounded-full" style="width: 75%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[11px] mb-1 font-mono"><span class="text-slate-300">ParaView</span><span class="text-tech-cyan">Très bon niveau</span></div>
+                            <div class="w-full h-1 bg-tech-black rounded-full overflow-hidden"><div class="h-1 bg-tech-blue rounded-full" style="width: 85%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloc 2: CAO & Structure -->
+                <div class="p-5 bg-tech-dark rounded-xl border border-slate-800/80 space-y-4">
+                    <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                        <i class="fa-solid fa-cubes text-tech-cyan text-base"></i>
+                        <h3 class="font-display font-bold text-sm text-white uppercase tracking-wider">Structure & Modélisation</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between text-[11px] mb-1 font-mono"><span class="text-slate-300">ABAQUS (FEA)</span><span class="text-tech-cyan">Pratique</span></div>
+                            <div class="w-full h-1 bg-tech-black rounded-full overflow-hidden"><div class="h-1 bg-tech-blue rounded-full" style="width: 75%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[11px] mb-1 font-mono"><span class="text-slate-300">Rhino 3D / SolidWorks</span><span class="text-tech-cyan">Intermédiaire</span></div>
+                            <div class="w-full h-1 bg-tech-black rounded-full overflow-hidden"><div class="h-1 bg-tech-blue rounded-full" style="width: 80%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[11px] mb-1 font-mono"><span class="text-slate-300">Maillage (snappyHexMesh / blockMesh)</span><span class="text-tech-cyan">Pratique</span></div>
+                            <div class="w-full h-1 bg-tech-black rounded-full overflow-hidden"><div class="h-1 bg-tech-blue rounded-full" style="width: 75%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloc 3: Code & Calcul -->
+                <div class="p-5 bg-tech-dark rounded-xl border border-slate-800/80 space-y-4">
+                    <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                        <i class="fa-solid fa-code text-tech-cyan text-base"></i>
+                        <h3 class="font-display font-bold text-sm text-white uppercase tracking-wider">Calcul Scientifique & Code</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between text-[11px] mb-1 font-mono"><span class="text-slate-300">Python (NumPy, SciPy, Matplotlib)</span><span class="text-tech-cyan">Très bon niveau</span></div>
+                            <div class="w-full h-1 bg-tech-black rounded-full overflow-hidden"><div class="h-1 bg-tech-blue rounded-full" style="width: 85%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[11px] mb-1 font-mono"><span class="text-slate-300">C++ (Modifications OpenFOAM)</span><span class="text-tech-cyan">Bases</span></div>
+                            <div class="w-full h-1 bg-tech-black rounded-full overflow-hidden"><div class="h-1 bg-tech-blue rounded-full" style="width: 60%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[11px] mb-1 font-mono"><span class="text-slate-300">HTML / CSS</span><span class="text-tech-cyan">Intermédiaire</span></div>
+                            <div class="w-full h-1 bg-tech-black rounded-full overflow-hidden"><div class="h-1 bg-tech-blue rounded-full" style="width: 70%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloc 4: Outils & Environnement -->
+                <div class="p-5 bg-tech-dark rounded-xl border border-slate-800/80 space-y-4">
+                    <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                        <i class="fa-solid fa-terminal text-tech-cyan text-base"></i>
+                        <h3 class="font-display font-bold text-sm text-white uppercase tracking-wider">Environnement de Travail</h3>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2.5 pt-1">
+                        <div class="p-3 bg-tech-black rounded-lg text-center border border-slate-800/50">
+                            <span class="block font-semibold text-white text-xs">Emacs</span>
+                            <span class="text-[9px] text-tech-cyan font-mono tracking-wider">Quotidien</span>
+                        </div>
+                        <div class="p-3 bg-tech-black rounded-lg text-center border border-slate-800/50">
+                            <span class="block font-semibold text-white text-xs">LaTeX</span>
+                            <span class="text-[9px] text-tech-cyan font-mono tracking-wider">Rapports</span>
+                        </div>
+                        <div class="p-3 bg-tech-black rounded-lg text-center border border-slate-800/50">
+                            <span class="block font-semibold text-white text-xs">Linux / Git</span>
+                            <span class="text-[9px] text-tech-cyan font-mono tracking-wider">Versionning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ONGLET 3 : PROJETS ================= -->
+        <section id="projets" class="tab-content space-y-12">
+            <div>
+                <h2 class="font-display font-bold text-2xl text-white mb-1.5">Mes Projets</h2>
+                <p class="text-xs text-tech-textMuted">Rapports d'études, projets académiques et analyses hydrodynamiques modélisés.</p>
+            </div>
+
+            <!-- PROJET 1 : COQUE PLANANTE (FLOW-3D / OPENFOAM) -->
+            <article class="p-6 md:p-8 bg-tech-dark rounded-2xl border border-slate-800/80 space-y-6">
+                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 border-b border-slate-800/60 pb-5">
+                    <div>
+                        <span class="px-2.5 py-1 bg-tech-blue/10 text-tech-cyan font-mono text-[10px] rounded border border-tech-blue/25 uppercase tracking-wide">Simulation & Analyse Hydrodynamique</span>
+                        <h3 class="font-display font-bold text-xl md:text-2xl text-white mt-1.5">Étude du comportement d'une coque planante</h3>
+                        <p class="text-xs text-tech-cyan font-mono mt-1"><i class="fa-solid fa-users mr-1"></i> Projet réalisé en binôme avec **Lisa Jabot** (contribution égale)</p>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="bg-tech-black text-tech-cyan text-[10px] px-2.5 py-1 rounded font-mono border border-slate-800">Flow-3D</span>
+                        <span class="bg-tech-black text-tech-cyan text-[10px] px-2.5 py-1 rounded font-mono border border-slate-800">OpenFOAM</span>
+                        <span class="bg-tech-black text-tech-cyan text-[10px] px-2.5 py-1 rounded font-mono border border-slate-800">ParaView</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <div class="lg:col-span-7 space-y-6 text-sm text-slate-300 leading-relaxed">
+                        
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-blue"></span> Contexte et Objectif
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                L'objectif principal était d'étudier et d'optimiser le design d'une coque rapide pour éviter les instabilités oscillatoires (marsouinage) avant qu'elle n'atteigne son régime de planning stable. Nous devions comprendre la physique fine des moments de tangage et de portance à différentes vitesses.
+                            </p>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-blue"></span> Technologies Utilisées
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                Nous avons utilisé deux logiciels majeurs : **OpenFOAM** (solveur interFoam) et **Flow-3D** (avec modèle de fluide libre). Pour calibrer nos solveurs, nous avons d'abord mené un cas test comparatif simple : la simulation de la chute et de l'oscillation d'un cube flottant lâché depuis une hauteur initiale. Les visualisations et graphiques ont été faits sur **ParaView**.
+                            </p>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-blue"></span> Rôle et Contributions
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                Lisa et moi avons partagé les tâches de façon égale : j'ai configuré la simulation de la coque planante sur **Flow-3D** en appliquant une rampe de vitesse en escalier progressive pour capter l'évolution de l'assiette du navire. Nous avons analysé ensemble la convergence du maillage, extrait les forces de traînée et de portance, et identifié les limites d'apparition du régime oscillatoire.
+                            </p>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-blue"></span> Résultats et Réalisations
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                Notre étude a permis de cerner avec précision les plages de nombres de Froude critiques génératrices d'instabilités. Les résultats de traînée sur Flow-3D ont été corrélés avec les théories hydrodynamiques et ont permis de proposer des ajustements sur la position du centre de gravité pour réduire l'amplitude des oscillations.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- Média droite (5/12) -->
+                    <div class="lg:col-span-5 space-y-4">
+                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-tech-black/90 relative group aspect-video flex flex-col items-center justify-center p-4 text-center">
+                            <img src="image1.png" alt="Simulation coque planante" class="hidden w-full h-full object-cover" onerror="this.style.display='none';">
+                            <div class="text-slate-500 hover:text-slate-400 transition duration-150 flex flex-col items-center">
+                                <i class="fa-solid fa-photo-film text-3xl mb-3 text-tech-cyan/40"></i>
+                                <span class="text-xs font-semibold text-white">image1.png</span>
+                                <p class="text-[10px] text-tech-textMuted max-w-[250px] mt-1 leading-normal font-mono">
+                                    Simulation CFD de l'écoulement sur la coque planante et comparaison de portance.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Livrables -->
+                        <div class="bg-tech-black/80 p-4 rounded-xl border border-slate-800/80 space-y-2">
+                            <span class="text-[10px] uppercase font-mono text-slate-400 block"><i class="fa-regular fa-file-pdf mr-1 text-tech-cyan"></i> Livrables joints</span>
+                            <div class="flex gap-2">
+                                <a href="Rapport__Coque_planante(3).pdf" target="_blank" class="flex-1 text-center py-2 bg-tech-blue/20 hover:bg-tech-blue/35 border border-tech-blue/45 text-white text-xs font-semibold rounded-lg transition duration-150">
+                                    📊 Rapport
+                                </a>
+                                <a href="Oral-Projet-2A-coque-planante.pdf" target="_blank" class="flex-1 text-center py-2 bg-tech-blue hover:bg-blue-600 text-white text-xs font-semibold rounded-lg transition duration-150">
+                                    📄 Diaporama
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PROJET 2 : DIGUE FLOTTANTE ET STARBLOCKS (1A) -->
+            <article class="p-6 md:p-8 bg-tech-dark rounded-2xl border border-slate-800/80 space-y-6">
+                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 border-b border-slate-800/60 pb-5">
+                    <div>
+                        <span class="px-2.5 py-1 bg-tech-blue/10 text-tech-cyan font-mono text-[10px] rounded border border-tech-blue/25 uppercase tracking-wide">Projet 1ère Année d'École</span>
+                        <h3 class="font-display font-bold text-xl md:text-2xl text-white mt-1.5">Étude de digue flottante et de Starblocks pour l'atténuation des vagues</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="bg-tech-black text-tech-cyan text-[10px] px-2.5 py-1 rounded font-mono border border-slate-800">Bassin à vagues</span>
+                        <span class="bg-tech-black text-tech-cyan text-[10px] px-2.5 py-1 rounded font-mono border border-slate-800">Hydrologie</span>
+                        <span class="bg-tech-black text-tech-cyan text-[10px] px-2.5 py-1 rounded font-mono border border-slate-800">Modélisation Physique</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <div class="lg:col-span-7 space-y-6 text-sm text-slate-300 leading-relaxed">
+                        
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-blue"></span> Contexte et Objectif
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                Ce projet de première année portait sur la protection des côtes et l'atténuation de la houle côtière. Nous avons étudié comment un dispositif composé d'une digue flottante couplée à des blocs brise-lames géométriques brevetés (les Starblocks) pouvait dissiper l'énergie cinétique de la houle pour protéger les infrastructures portuaires.
+                            </p>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-blue"></span> Technologies Utilisées
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                Réalisation d'essais en laboratoire au sein d'un bassin à vagues expérimental de l'école. Modélisation géométrique des blocs et utilisation d'outils analytiques d'ondes pour mesurer les coefficients de réflexion et de transmission de l'énergie des vagues.
+                            </p>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-blue"></span> Rôle et Contributions
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                J'ai participé activement à l'élaboration de la maquette physique, au calibrage des sondes de niveau d'eau dans le bassin, et au traitement mathématique des signaux de vagues pour évaluer la part de houle transmise derrière la digue flottante en fonction des périodes de houle injectées.
+                            </p>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-blue"></span> Résultats et Réalisations
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                Nos essais physiques ont mis en avant l'importance de l'agencement géométrique des Starblocks, montrant une réduction d'énergie de la houle incidente pouvant atteindre **plus de 60%** sous certaines configurations de houles courtes de tempêtes.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- Média droite (5/12) -->
+                    <div class="lg:col-span-5 space-y-4">
+                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-tech-black/90 relative group aspect-video flex flex-col items-center justify-center p-4 text-center">
+                            <img src="image2.png" alt="Digue et Starblocks" class="hidden w-full h-full object-cover" onerror="this.style.display='none';">
+                            <div class="text-slate-500 hover:text-slate-400 transition duration-150 flex flex-col items-center">
+                                <i class="fa-solid fa-water text-3xl mb-3 text-tech-cyan/40"></i>
+                                <span class="text-xs font-semibold text-white">image2.png</span>
+                                <p class="text-[10px] text-tech-textMuted max-w-[250px] mt-1 leading-normal font-mono">
+                                    Essais en bassin à vagues et atténuation par brise-lames.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PROJET 3 : AÉRODYNAMIQUE DE VOITURE (OPENFOAM) -->
+            <article class="p-6 md:p-8 bg-tech-dark rounded-2xl border border-slate-800/80 space-y-6">
+                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 border-b border-slate-800/60 pb-5">
+                    <div>
+                        <span class="px-2.5 py-1 bg-tech-blue/10 text-tech-cyan font-mono text-[10px] rounded border border-tech-blue/25 uppercase tracking-wide">Projet de Milieu d'Année</span>
+                        <h3 class="font-display font-bold text-xl md:text-2xl text-white mt-1.5">Écoulement aérodynamique de l'air autour d'une voiture</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="bg-tech-black text-tech-cyan text-[10px] px-2.5 py-1 rounded font-mono border border-slate-800">OpenFOAM</span>
+                        <span class="bg-tech-black text-tech-cyan text-[10px] px-2.5 py-1 rounded font-mono border border-slate-800">simpleFoam</span>
+                        <span class="bg-tech-black text-tech-cyan text-[10px] px-2.5 py-1 rounded font-mono border border-slate-800">ParaView</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <div class="lg:col-span-7 space-y-6 text-sm text-slate-300 leading-relaxed">
+                        
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-blue"></span> Contexte et Objectif
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                Ce projet consistait à analyser la dynamique de sillage et le coefficient de traînée d'un modèle de véhicule d'études. L'enjeu était de cartographier la zone de recirculation d'air à l'arrière du véhicule qui pénalise fortement la consommation de carburant.
+                            </p>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-blue"></span> Technologies Utilisées
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                Importation de la géométrie de voiture simplifiée. Génération d'une boîte de soufflerie numérique et maillage à l'aide du solveur intégré <span class="font-mono text-tech-cyan text-[11px]">blockMesh</span> et du rafineur de couches de parois <span class="font-mono text-tech-cyan text-[11px]">snappyHexMesh</span> d'OpenFOAM. Simulation stationnaire compressible à l'aide du solveur classique <span class="font-mono text-tech-cyan text-[11px]">simpleFoam</span>.
+                            </p>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-blue"></span> Rôle et Contributions
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                J'ai programmé le paramétrage des conditions aux limites d'admission de soufflerie, ajusté le modèle de turbulence RANS pour représenter au mieux les sillages détachés et procédé au post-traitement des lignes de courant et du gradient de pression sur ParaView pour localiser les foyers de traînée.
+                            </p>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-blue"></span> Résultats et Réalisations
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                L'étude a permis de modéliser correctement le recollement du flux sur le hayon arrière. Le coefficient de traînée ($C_x$) extrait numériquement s'est révélé être en adéquation avec les abaques de référence de la soufflerie automobile d'essais.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- Média droite (5/12) -->
+                    <div class="lg:col-span-5 space-y-4">
+                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-tech-black/90 relative group aspect-video flex flex-col items-center justify-center p-4 text-center">
+                            <img src="image3.png" alt="Aérodynamique voiture OpenFOAM" class="hidden w-full h-full object-cover" onerror="this.style.display='none';">
+                            <div class="text-slate-500 hover:text-slate-400 transition duration-150 flex flex-col items-center">
+                                <i class="fa-solid fa-car text-3xl mb-3 text-tech-cyan/40"></i>
+                                <span class="text-xs font-semibold text-white">image3.png</span>
+                                <p class="text-[10px] text-tech-textMuted max-w-[250px] mt-1 leading-normal font-mono">
+                                    Vortex et lignes de courant colorées par la vitesse sur ParaView.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- PROJET 4 : TIPE PADDLEBOARD (2024) -->
+            <article class="p-6 md:p-8 bg-tech-dark rounded-2xl border border-slate-800/80 space-y-6">
+                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 border-b border-slate-800/60 pb-5">
+                    <div>
+                        <span class="px-2.5 py-1 bg-tech-blue/10 text-tech-cyan font-mono text-[10px] rounded border border-tech-blue/25 uppercase tracking-wide">Projet de Recherche Supervisé (TIPE)</span>
+                        <h3 class="font-display font-bold text-xl md:text-2xl text-white mt-1.5">Analyse de la stabilité d'un Stand-up Paddleboard</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="bg-tech-black text-tech-cyan text-[10px] px-2.5 py-1 rounded font-mono border border-slate-800">Python</span>
+                        <span class="bg-tech-black text-tech-cyan text-[10px] px-2.5 py-1 rounded font-mono border border-slate-800">Modélisation</span>
+                        <span class="bg-tech-black text-tech-cyan text-[10px] px-2.5 py-1 rounded font-mono border border-slate-800">Physique</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <div class="lg:col-span-7 space-y-6 text-sm text-slate-300 leading-relaxed">
+                        
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-cyan"></span> Contexte et Objectif
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                Élaboré durant mes classes préparatoires, ce projet visait à modéliser mathématiquement l'équilibre d'une planche de paddle soumise à une force d'excitation ondulatoire, simulant la houle. L'objectif était d'évaluer la stabilité limite avant basculement de l'utilisateur.
+                            </p>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-cyan"></span> Technologies Utilisées
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                Conception d'un modèle d'équations différentielles couplées (tangage, roulis) codé et résolu numériquement sous **Python** à l'aide de <span class="font-mono text-tech-cyan text-[11px]">SciPy</span>. Des tests réels de flottaison et d'excitation de gîte ont été conduits pour alimenter le modèle en coefficients amortisseurs.
+                            </p>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-cyan"></span> Rôle et Contributions
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                J'ai développé entièrement l'algorithme de résolution de Runge-Kutta sous Python, tracé les diagrammes de bifurcation et mesuré en conditions réelles la hauteur maximale théorique autorisée du centre de gravité pour l'utilisateur.
+                            </p>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-cyan"></span> Résultats et Réalisations
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                La simulation a permis de fixer le gabarit maximal sécurisé de la planche. Les courbes analytiques ont décrit avec une marge d'erreur faible l'angle critique de gîte limite, prouvant l'apport du modèle pour les phases de shape préliminaires.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- Média droite (5/12) -->
+                    <div class="lg:col-span-5 space-y-4">
+                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-tech-black/90 relative group aspect-video flex flex-col items-center justify-center p-4 text-center">
+                            <img src="image4.png" alt="TIPE Paddleboard" class="hidden w-full h-full object-cover" onerror="this.style.display='none';">
+                            <div class="text-slate-500 hover:text-slate-400 transition duration-150 flex flex-col items-center">
+                                <i class="fa-solid fa-person-swimming text-3xl mb-3 text-tech-cyan/40"></i>
+                                <span class="text-xs font-semibold text-white">image4.png</span>
+                                <p class="text-[10px] text-tech-textMuted max-w-[250px] mt-1 leading-normal font-mono">
+                                    Courbes de stabilité et mesures de flottaison sous Python.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center bg-tech-black/80 p-4 rounded-xl border border-slate-800/80">
+                            <div class="text-xs">
+                                <span class="text-white block font-medium">Livrable disponible</span>
+                                <span class="text-tech-textMuted font-mono text-[9px]">rapport-tipe.pdf</span>
+                            </div>
+                            <a href="rapport-tipe.pdf" target="_blank" class="px-4 py-2 bg-tech-blue hover:bg-blue-600 text-white text-xs font-semibold rounded-lg transition duration-150">
+                                <i class="fa-regular fa-file-pdf mr-1"></i> Consulter le TIPE
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ================= ONGLET 4 : STAGES ================= -->
+        <section id="stage" class="tab-content space-y-8">
+            <div>
+                <h2 class="font-display font-bold text-2xl text-white mb-1.5">Mes Stages</h2>
+                <p class="text-xs text-tech-textMuted">Expériences pratiques et applications des modèles physiques en milieux réels.</p>
+            </div>
+
+            <!-- STAGE 2A : ISLANDE -->
+            <article class="p-6 md:p-8 bg-tech-dark rounded-2xl border border-slate-800/80 space-y-6">
+                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 border-b border-slate-800/60 pb-5">
+                    <div>
+                        <span class="px-2.5 py-1 bg-tech-blue/10 text-tech-cyan font-mono text-[10px] rounded border border-tech-blue/25 uppercase tracking-wide">Stage de fin de 2ème année</span>
+                        <h3 class="font-display font-bold text-xl md:text-2xl text-white mt-1.5">Mécanique des glaces en milieu arctique</h3>
+                        <p class="text-xs text-tech-cyan font-mono mt-1"><i class="fa-solid fa-building-columns mr-1"></i> Université des Westfjords — Ísafjörður, Islande 🇮🇸</p>
+                    </div>
+                    <span class="bg-tech-black text-slate-300 text-xs px-3 py-1.5 rounded-lg border border-slate-800 font-mono">Mai - Août 2026</span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <div class="lg:col-span-7 space-y-6 text-sm text-slate-300 leading-relaxed">
+                        
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-cyan"></span> Contexte et Objectif
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                Ce stage de recherche a été réalisé pour étudier les contraintes mécaniques internes et les propriétés de la glace de mer soumise à des pressions hydrodynamiques importantes. L'enjeu de l'étude portait sur l'impact de la dérive des glaces sur les navires polaires et les ports isolés de la région côtière nord-islandaise.
+                            </p>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-cyan"></span> Technologies Utilisées
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                Utilisation de modèles rhéologiques de solides, analyses thermiques couplées et relevés de terrain. Traitement informatique des données de pression et des modèles hydro-solides pour analyser le frottement dynamique entre coques et plaques de glace.
+                            </p>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-cyan"></span> Rôle et Contributions
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                Intégrée au laboratoire d'études côtières, j'ai participé à la modélisation mathématique du contact glace-structure, et j'ai rédigé des scripts de calculs pour évaluer le seuil de rupture mécanique en cisaillement de différentes épaisseurs de glace.
+                            </p>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-cyan"></span> Résultats et Réalisations
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                Nos analyses théoriques et numériques ont permis de valider des prévisions fiables sur les contraintes d'écrasement de glace de surface, aidant à mieux modéliser la dérive locale et son niveau d'effort mécanique sur les brise-lames.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="lg:col-span-5 space-y-4">
+                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-tech-black/90 relative group aspect-video flex flex-col items-center justify-center p-4 text-center">
+                            <img src="image5.png" alt="Stage Islande" class="hidden w-full h-full object-cover" onerror="this.style.display='none';">
+                            <div class="text-slate-500 hover:text-slate-400 transition duration-150 flex flex-col items-center">
+                                <i class="fa-solid fa-snowflake text-3xl mb-3 text-tech-cyan/40"></i>
+                                <span class="text-xs font-semibold text-white">image5.png</span>
+                                <p class="text-[10px] text-tech-textMuted max-w-[250px] mt-1 leading-normal font-mono">
+                                    Étude côtière et glaces de mer à Ísafjörður.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center bg-tech-black/80 p-4 rounded-xl border border-slate-800/80">
+                            <div class="text-xs">
+                                <span class="text-white block font-medium">Livrable disponible</span>
+                                <span class="text-tech-textMuted font-mono text-[9px]">rapport-stage-2eme-annee.pdf</span>
+                            </div>
+                            <a href="rapport-stage-2eme-annee.pdf" target="_blank" class="px-4 py-2 bg-tech-blue hover:bg-blue-600 text-white text-xs font-semibold rounded-lg transition duration-150">
+                                <i class="fa-regular fa-file-pdf mr-1"></i> Consulter le Rapport 2A
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- STAGE 1A : TOULON -->
+            <article class="p-6 md:p-8 bg-tech-dark rounded-2xl border border-slate-800/80 space-y-6">
+                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 border-b border-slate-800/60 pb-5">
+                    <div>
+                        <span class="px-2.5 py-1 bg-tech-blue/10 text-tech-cyan font-mono text-[10px] rounded border border-tech-blue/25 uppercase tracking-wide">Stage de fin de 1ère année</span>
+                        <h3 class="font-display font-bold text-xl md:text-2xl text-white mt-1.5">Charpente et rénovation de navire traditionnel</h3>
+                        <p class="text-xs text-tech-cyan font-mono mt-1"><i class="fa-solid fa-ship mr-1"></i> Espace Tourville — Chantier Naval Traditionnel, France</p>
+                    </div>
+                    <span class="bg-tech-black text-slate-300 text-xs px-3 py-1.5 rounded-lg border border-slate-800 font-mono">Juillet 2025</span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <div class="lg:col-span-7 space-y-6 text-sm text-slate-300 leading-relaxed">
+                        
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-cyan"></span> Contexte et Objectif
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                Réalisé sur un chantier de charpente de marine historique reconstituant un vaisseau de ligne du XVIIe siècle. L'objectif était de comprendre de manière concrète les structures navales, l'agencement tridimensionnel des pièces de bois et les assemblages structuraux de coques navales traditionnelles.
+                            </p>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-cyan"></span> Technologies Utilisées
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                Outils traditionnels de tracé, techniques de mise en forme des bois tors à l'aide de gabarits géométriques. Lecture de plans historiques de structures d'architecture navale en membrure double.
+                            </p>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-cyan"></span> Rôle et Contributions
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                J'ai assisté les charpentiers de marine de l'Espace Tourville dans le façonnage, le chevillage de bois et l'assemblage de pièces majeures de la coque. Cette expérience m'a donné un point de vue physique unique sur la cohésion structurelle d'une carène.
+                            </p>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-tech-cyan"></span> Résultats et Réalisations
+                            </h4>
+                            <p class="text-xs pl-3.5 text-slate-300">
+                                Ce stage a permis de concrétiser les cours théoriques de résistance des matériaux appliqués au bois naval et a renforcé ma vision de la structure navale, fondamentale dans la poursuite de mon cursus.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="lg:col-span-5 space-y-4">
+                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-tech-black/90 relative group aspect-video flex flex-col items-center justify-center p-4 text-center">
+                            <img src="image6.png" alt="Stage Espace Tourville" class="hidden w-full h-full object-cover" onerror="this.style.display='none';">
+                            <div class="text-slate-500 hover:text-slate-400 transition duration-150 flex flex-col items-center">
+                                <i class="fa-solid fa-compass text-3xl mb-3 text-tech-cyan/40"></i>
+                                <span class="text-xs font-semibold text-white">image6.png</span>
+                                <p class="text-[10px] text-tech-textMuted max-w-[250px] mt-1 leading-normal font-mono">
+                                    Chantier naval traditionnel historique.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center bg-tech-black/80 p-4 rounded-xl border border-slate-800/80">
+                            <div class="text-xs">
+                                <span class="text-white block font-medium">Livrable disponible</span>
+                                <span class="text-tech-textMuted font-mono text-[9px]">rapport-stage-1ere-annee.pdf</span>
+                            </div>
+                            <a href="rapport-stage-1ere-annee.pdf" target="_blank" class="px-4 py-2 bg-tech-blue hover:bg-blue-600 text-white text-xs font-semibold rounded-lg transition duration-150">
+                                <i class="fa-regular fa-file-pdf mr-1"></i> Consulter le Rapport 1A
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ================= ONGLET 5 : CONTACT ================= -->
+        <section id="contact" class="tab-content space-y-8">
+            <div>
+                <h2 class="font-display font-bold text-2xl text-white mb-1.5">Contact</h2>
+                <p class="text-xs text-tech-textMuted">N'hésitez pas à me contacter pour toute discussion sur mes travaux académiques ou opportunités de stage.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Coordonnées directes -->
+                <div class="lg:col-span-1 p-5 bg-tech-dark rounded-xl border border-slate-800/80 space-y-4">
+                    <h3 class="font-display font-bold text-sm text-white mb-2 uppercase tracking-wide text-tech-cyan">Canaux directs</h3>
+                    
+                    <div class="flex items-center gap-3.5 text-xs">
+                        <span class="w-8 h-8 rounded bg-tech-black text-tech-cyan flex items-center justify-center"><i class="fa-solid fa-envelope"></i></span>
+                        <div>
+                            <span class="block text-[10px] text-tech-textMuted font-mono">E-mail</span>
+                            <a href="mailto:havret.anaelle@gmail.com" class="text-white hover:text-tech-cyan transition font-mono">havret.anaelle@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3.5 text-xs">
+                        <span class="w-8 h-8 rounded bg-tech-black text-tech-cyan flex items-center justify-center"><i class="fa-solid fa-route"></i></span>
+                        <div>
+                            <span class="block text-[10px] text-tech-textMuted font-mono">Mobilité</span>
+                            <span class="text-white">France / International</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulaire sobre -->
+                <div class="lg:col-span-2 p-5 bg-tech-dark rounded-xl border border-slate-800/80 space-y-4">
+                    <h3 class="font-display font-bold text-sm text-white uppercase tracking-wide text-tech-cyan">Formulaire de contact</h3>
+                    <form action="#" class="space-y-4 text-xs" onsubmit="event.preventDefault();">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[10px] font-mono text-slate-400 mb-1">Nom / Entreprise</label>
+                                <input type="text" placeholder="Ex: Laboratoire de Calcul" class="w-full bg-tech-black border border-slate-800 rounded px-3.5 py-2.5 text-white focus:outline-none focus:border-tech-blue transition">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-mono text-slate-400 mb-1">E-mail de contact</label>
+                                <input type="email" placeholder="nom@mail.com" class="w-full bg-tech-black border border-slate-800 rounded px-3.5 py-2.5 text-white focus:outline-none focus:border-tech-blue transition">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-mono text-slate-400 mb-1">Objet</label>
+                            <input type="text" placeholder="Ex: Projet d'analyse CFD ou stage" class="w-full bg-tech-black border border-slate-800 rounded px-3.5 py-2.5 text-white focus:outline-none focus:border-tech-blue transition">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-mono text-slate-400 mb-1">Message</label>
+                            <textarea rows="4" placeholder="Votre message..." class="w-full bg-tech-black border border-slate-800 rounded px-3.5 py-2.5 text-white focus:outline-none focus:border-tech-blue transition"></textarea>
+                        </div>
+                        <button type="submit" class="px-5 py-2.5 bg-tech-blue hover:bg-blue-600 text-white font-semibold rounded transition duration-150">
+                            Envoyer <i class="fa-solid fa-paper-plane ml-1"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- LOGIQUE DE NAVIGATION DES ONGLETS -->
+    <script>
+        function switchTab(tabId) {
+            // Désactiver tous les onglets
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Réinitialiser les styles de tous les boutons de la barre latérale
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(button => {
+                button.classList.remove('text-white', 'bg-tech-blue/20', 'border-l-2', 'border-tech-blue');
+                button.classList.add('text-tech-textMuted', 'hover:text-white', 'hover:bg-tech-medium/30');
+                
+                const icon = button.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('text-tech-cyan');
+                }
+            });
+
+            // Activer le bon onglet
+            const activeContent = document.getElementById(tabId);
+            if (activeContent) {
+                activeContent.classList.add('active');
+            }
+
+            // Mettre en valeur le bouton cliqué
+            const clickedBtn = document.getElementById('btn-' + tabId);
+            if (clickedBtn) {
+                clickedBtn.classList.remove('text-tech-textMuted', 'hover:text-white', 'hover:bg-tech-medium/30');
+                clickedBtn.classList.add('text-white', 'bg-tech-blue/20', 'border-l-2', 'border-tech-blue');
+                
+                const icon = clickedBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.add('text-tech-cyan');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
