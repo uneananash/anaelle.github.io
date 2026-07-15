@@ -503,21 +503,20 @@
                     </div>
 
                     <div class="lg:col-span-5 space-y-4">
-                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-tech-black/90 relative group aspect-video flex flex-col items-center justify-center p-4 text-center">
-    <!-- J'ai retiré 'hidden' et ajouté 'absolute inset-0' pour qu'elle couvre tout le bloc -->
-    <img src="gopro.png" alt="Digue flottante" class="w-full h-full object-cover absolute inset-0 z-0">
     
+    <!-- Première image : gopro.png -->
+    <div class="border border-slate-800 rounded-xl overflow-hidden bg-tech-black/90 aspect-video flex items-center justify-center">
+        <img src="gopro.png" alt="Digue flottante" class="w-full h-full object-cover">
     </div>
 
-                        <!-- J'ai changé 'p-4' pour 'p-10' pour créer de l'espace autour de l'image -->
-<div class="border border-slate-800 rounded-xl overflow-hidden bg-tech-black/90 relative group aspect-video flex flex-col items-center justify-center p-10 text-center">
-    
-    <!-- CORRECTION : J'ai supprimé l'espace dans le nom du fichier -> 'STARBLOCKS.png' -->
-    <!-- Je garde 'object-contain' au lieu de 'object-cover' pour que l'image ne soit pas coupée et reste entière dans le nouvel espace -->
-    <img src="STARBLOCKS.png" alt="Digue flottante" class="w-full h-full object-contain absolute inset-0 z-0 p-4"> 
-    
+    <!-- Deuxième image : STARBLOCKS.png -->
+    <div class="border border-slate-800 rounded-xl overflow-hidden bg-tech-black/90 aspect-video flex items-center justify-center p-10">
+        <!-- On garde 'object-contain' pour ne pas couper l'image et on retire 'absolute' -->
+        <img src="STARBLOCKS.png" alt="Digue flottante" class="w-full h-full object-contain">
+    </div>
+
 </div>
-</div>
+                    
                         
                     </div>
                 
