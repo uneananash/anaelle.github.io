@@ -150,7 +150,7 @@
                     Étudiante en 3eme année à Seatech<br>
                 </h2>
                 <p class="text-sm md:text-base text-slate-300 max-w-3xl leading-relaxed font-light">
-                    Actuellement en troisième année au sein de l'école d'ingénieur SeaTech Toulon, je suis le parcours MOCA (Mécanique des fluides, calculs de structures et éléments finis). J'ai orienté mon expertise vers l'architecture navale à travers des enseignements électifs spécialisés ainsi qu'un semestre d'échange académique effectué à la NTNU. Passionnée par le maritime, je suis aujourd'hui à la recherche d'un stage de fin d'études d'une durée de 6 mois au sein d'une structure évoluant dans les secteurs naval, maritime ou des énergies marines.
+                    Actuellement en troisième année au sein de l'école d'ingénieur SeaTech Toulon, je suis le parcours MOCA (Modélisation Calculs Fluides et Structures). J'ai orienté mon expertise vers l'architecture navale à travers des enseignements électifs spécialisés ainsi qu'un semestre d'échange académique effectué à la NTNU. Passionnée par le maritime, je suis aujourd'hui à la recherche d'un stage de fin d'études d'une durée de 6 mois au sein d'une structure évoluant dans les secteurs naval, maritime ou des énergies marines.
                 </p>
             </div>
             
@@ -162,7 +162,8 @@
                 
                 <div class="flex flex-col gap-6 w-full">
                     
-                    <!-- 1. NTNU -->
+                  
+                       <!-- 1. NTNU -->
                     <div class="p-8 bg-tech-dark border border-tech-blue/30 rounded-2xl flex flex-row items-center gap-8 w-full">
                         <div class="w-24 h-24 shrink-0 bg-white p-3 rounded-2xl flex items-center justify-center">
                             <img src="ntnu.webp" alt="Logo NTNU" class="w-full h-full object-contain">
@@ -176,17 +177,26 @@
                     </div>
 
                     <!-- 2. SeaTech -->
-                    <div class="p-8 bg-tech-dark border border-slate-800 rounded-2xl flex flex-row items-center gap-8 w-full">
-                        <div class="w-24 h-24 shrink-0 bg-white p-3 rounded-2xl flex items-center justify-center">
-                            <img src="logo-seatech-2023-1.png" alt="Logo SeaTech" class="w-full h-full object-contain">
-                        </div>
-                        <div class="flex-grow">
-                            <span class="text-xs font-mono text-tech-cyan uppercase tracking-widest">2024 - 2027</span>
-                            <h4 class="font-bold text-white text-xl mt-1">École d'Ingénieurs</h4>
-                            <p class="text-md text-slate-400">SeaTech, Toulon</p>
-                            <p class="text-sm text-tech-cyan font-bold mt-2">Parcours MOCA | Option : Architecture Navale</p>
-                        </div>
-                    </div>
+<div class="p-8 bg-tech-dark border border-slate-800 rounded-2xl flex flex-row items-center gap-8 w-full">
+    <div class="w-24 h-24 shrink-0 bg-white p-3 rounded-2xl flex items-center justify-center">
+        <img src="logo-seatech-2023-1.png" alt="Logo SeaTech" class="w-full h-full object-contain">
+    </div>
+    <div class="flex-grow">
+        <span class="text-xs font-mono text-tech-cyan uppercase tracking-widest">2024 - 2027</span>
+        <h4 class="font-bold text-white text-xl mt-1">École d'Ingénieurs</h4>
+        <p class="text-md text-slate-400">SeaTech, Toulon</p>
+        <p class="text-sm text-tech-cyan font-bold mt-2">Parcours MOCA | Option : Architecture Navale</p>
+        
+        <!-- Ajout des cours -->
+        <div class="mt-4 flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-slate-900 border border-slate-700 rounded text-[10px] text-slate-300 font-mono">CFD</span>
+            <span class="px-2 py-1 bg-slate-900 border border-slate-700 rounded text-[10px] text-slate-300 font-mono">Éléments Finis</span>
+            <span class="px-2 py-1 bg-slate-900 border border-slate-700 rounded text-[10px] text-slate-300 font-mono">Abaqus</span>
+            <span class="px-2 py-1 bg-slate-900 border border-slate-700 rounded text-[10px] text-slate-300 font-mono">Mécanique des fluides</span>
+            <span class="px-2 py-1 bg-slate-900 border border-slate-700 rounded text-[10px] text-slate-300 font-mono">Hydrodynamique</span>
+        </div>
+    </div>
+</div>
 
                     <!-- 3. CPGE -->
                     <div class="p-8 bg-tech-dark border border-slate-800 rounded-2xl flex flex-row items-center gap-8 w-full">
@@ -400,16 +410,17 @@
                     </div>
 
                     <div class="lg:col-span-5 space-y-4">
-                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-tech-black/90 relative group aspect-video flex flex-col items-center justify-center p-4 text-center">
-                            <img src="batt.png" alt="Simulation coque planante" class="hidden w-full h-full object-cover" onerror="this.style.display='none';">
-                            <div class="text-slate-500 hover:text-slate-400 transition duration-150 flex flex-col items-center">
-                                <i class="fa-solid fa-photo-film text-3xl mb-3 text-tech-cyan/40"></i>
-                                <span class="text-xs font-semibold text-white">batt.png</span>
-                                <p class="text-[10px] text-tech-textMuted max-w-[250px] mt-1 leading-normal font-mono">
-                                    Simulation CFD de l'écoulement sur la coque planante et comparaison de portance.
-                                </p>
-                            </div>
-                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    
+    <div class="border border-slate-800 rounded-xl overflow-hidden bg-tech-black/90 relative group aspect-video flex items-center justify-center transition hover:border-tech-cyan/50">
+        <img src="battt.png" alt="Simulation coque planante" class="w-full h-full object-cover transition duration-300 group-hover:brightness-50">
+    </div>
+
+    <div class="border border-slate-800 rounded-xl overflow-hidden bg-tech-black/90 relative group aspect-video flex items-center justify-center transition hover:border-tech-cyan/50">
+        <img src="rhino.png" alt="Modélisation Rhino" class="w-full h-full object-cover transition duration-300 group-hover:brightness-50">
+    </div>
+
+</div>
 
                         <div class="bg-tech-black/80 p-4 rounded-xl border border-slate-800/80 space-y-2">
                             <span class="text-[10px] uppercase font-mono text-slate-400 block"><i class="fa-regular fa-file-pdf mr-1 text-tech-cyan"></i> Livrables joints</span>
@@ -478,23 +489,6 @@
                                 Nos résultats ont montré que les strablocks était bien plus efficaces que la dique flottante.
                             </p>
                         </div>
-
-                    </div>
-
-                    <div class="lg:col-span-5 space-y-4">
-                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-tech-black/90 relative group aspect-video flex flex-col items-center justify-center p-4 text-center">
-    <!-- J'ai retiré 'hidden' et ajouté 'absolute inset-0' pour qu'elle couvre tout le bloc -->
-    <img src="gopro.png" alt="Digue flottante" class="w-full h-full object-cover absolute inset-0 z-0">
-    
-    </div>
-
-                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-tech-black/90 relative group aspect-video flex flex-col items-center justify-center p-4 text-center">
-    <!-- J'ai retiré 'hidden' et ajouté 'absolute inset-0' pour qu'elle couvre tout le bloc -->
-    <img src="STARBLOCKS .png" alt="Digue flottante" class="w-full h-full object-cover absolute inset-0 z-0">
-    
-  
-</div>
-</div>
                         <div class="bg-tech-black/80 p-4 rounded-xl border border-slate-800/80 space-y-3">
                             <div class="flex items-center justify-between">
                                 <span class="text-[10px] uppercase font-mono text-slate-400 block"><i class="fa-regular fa-folder-open mr-1 text-tech-cyan"></i> Livrables joints</span>
@@ -505,8 +499,28 @@
                                 </a>
                             </div>
                         </div>
+
                     </div>
-                </div>
+
+                    <div class="lg:col-span-5 space-y-4">
+                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-tech-black/90 relative group aspect-video flex flex-col items-center justify-center p-4 text-center">
+    <!-- J'ai retiré 'hidden' et ajouté 'absolute inset-0' pour qu'elle couvre tout le bloc -->
+    <img src="gopro.png" alt="Digue flottante" class="w-full h-full object-cover absolute inset-0 z-0">
+    
+    </div>
+
+                        <!-- J'ai changé 'p-4' pour 'p-10' pour créer de l'espace autour de l'image -->
+<div class="border border-slate-800 rounded-xl overflow-hidden bg-tech-black/90 relative group aspect-video flex flex-col items-center justify-center p-10 text-center">
+    
+    <!-- CORRECTION : J'ai supprimé l'espace dans le nom du fichier -> 'STARBLOCKS.png' -->
+    <!-- Je garde 'object-contain' au lieu de 'object-cover' pour que l'image ne soit pas coupée et reste entière dans le nouvel espace -->
+    <img src="STARBLOCKS.png" alt="Digue flottante" class="w-full h-full object-contain absolute inset-0 z-0 p-4"> 
+    
+</div>
+</div>
+                        
+                    </div>
+                
             </article>
 
             <!-- PROJET 3 : VOITURE -->
