@@ -664,13 +664,41 @@
     </div>
 </div>
 
-                <div class="bg-slate-900 p-6 rounded-lg border border-slate-800">
-                    <h3 class="font-bold text-blue-400">Architecture Navale (Projet Richelieu)</h3>
-                    <p class="text-sm text-slate-400 my-2">Stabilité hydrostatique et dynamique.</p>
-                    <p class="text-sm text-slate-400 my-2">Projet réalisé en groupe : étude complète de la stabilité hydrostatique et dynamique d'un navire de ligne, incluant l'analyse des courbes de carène et le comportement du modèle en conditions réelles.</p>
-                    <a href="Naval_Architecture.pdf" class="text-xs underline block"><i class="fa-solid fa-file-pdf"></i> Rapport</a>
-                </div>
-            </div>
+               <div class="p-6 bg-tech-dark rounded-xl border border-slate-800/80 grid grid-cols-1 lg:grid-cols-2 gap-6">
+    
+    <div class="space-y-4">
+        <h3 class="font-bold text-white text-lg">Architecture Navale : Cuirassé Richelieu</h3>
+        
+        <span class="inline-block px-2 py-1 bg-tech-cyan/10 border border-tech-cyan/30 text-tech-cyan text-[10px] rounded uppercase tracking-widest font-mono">
+            Projet en groupe
+        </span>
+
+        <div class="space-y-2">
+            <p class="text-xs text-tech-cyan font-bold uppercase tracking-wider">Objectifs & Méthodologie</p>
+            <p class="text-sm text-slate-300 leading-relaxed">
+                Étude hydrostatique et dynamique complète du navire. Modélisation de la stabilité, calcul du centre de gravité (24 réservoirs analysés) et détermination de la réponse dynamique par <strong>RAOs</strong> sous excitation de houle (spectre JONSWAP).
+            </p>
+        </div>
+
+        <div class="bg-tech-black/80 p-4 rounded-xl border border-slate-800/80 space-y-2">
+            <span class="text-[10px] uppercase font-mono text-slate-400 block font-bold">Analyse Avancée</span>
+            <ul class="text-xs text-slate-400 list-disc list-inside space-y-1">
+                <li>Stabilité : Calculs de carène et influence du chargement.</li>
+                <li><strong>Dynamique :</strong> Couplage mouvement navire/orientation tourelles (rotation 90°, élévation 10°).</li>
+                <li>Détermination de la réponse au roulis sous houle latérale.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="flex flex-col gap-4">
+        <img src="richelieu1.png" alt="Analyse de stabilité Richelieu" class="w-full h-32 object-cover rounded-lg border border-slate-700">
+        <img src="richelieu2.png" alt="Réponse dynamique et RAO" class="w-full h-32 object-cover rounded-lg border border-slate-700">
+        
+        <a href="Naval_Architecture.pdf" target="_blank" class="w-full text-center py-2 bg-tech-blue/20 hover:bg-tech-blue/35 border border-tech-blue/45 text-white text-xs font-semibold rounded-lg transition duration-150">
+            Voir le rapport complet
+        </a>
+    </div>
+</div>
 
             <!-- PROJET 4 : TIPE PADDLEBOARD -->
             <article class="p-6 md:p-8 bg-tech-dark rounded-2xl border border-slate-800/80 space-y-6">
