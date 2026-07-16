@@ -523,43 +523,146 @@
             </article>
 
             <!-- PROJET 3 : VOITURE -->
-            <div class="p-6 bg-tech-dark rounded-xl border border-slate-800/80 space-y-4">
-                <h3 class="font-bold text-white">Simulation Aérodynamique - Voiture (OpenFOAM)</h3>
-                <p class="text-xs text-tech-textMuted italic">Projet milieu d'année </p>
-                <p class="text-sm text-slate-300">Ce projet porte sur la simulation numérique de l'écoulement d'air autour d'un véhicule en régime stationnaire à l'aide d'OpenFOAM, visant à valider la convergence du maillage et à analyser précisément les caractéristiques aérodynamiques du modèle. </p>
-                <div class="bg-tech-black/80 p-4 rounded-xl border border-slate-800/80 space-y-2">
-                    <span class="text-[10px] uppercase font-mono text-slate-400 block"><i class="fa-regular fa-file-pdf mr-1 text-tech-cyan"></i> Livrables joints</span>
-                    <div class="flex gap-2">
-                        <a href="Projet-Openfoam.pdf" target="_blank" class="w-full text-center py-2 bg-tech-blue/20 hover:bg-tech-blue/35 border border-tech-blue/45 text-white text-xs font-semibold rounded-lg transition duration-150">
-                            🗣️ Diaporama Écoulement
-                        </a>
-                    </div>
-                </div>
-            </div>
-     <div class="bg-slate-900 p-6 rounded-lg border border-slate-800">
-    <h3 class="font-bold text-blue-400">Ombrière (Abaqus)</h3>
-    <!-- Voici le texte mis à jour -->
-    <p class="text-sm text-slate-400 my-2">Etude de la resistance mécanique d'une ombrière incluant une analyse des contraintes et une optimisation de la géométrie 2D/3D sous Abaqus.</p>
-    <a href="Ombrière_Abaqus.pdf" class="text-xs underline block"><i class="fa-solid fa-file-pdf"></i> Rapport PDF</a>
+            <div class="p-6 bg-tech-dark rounded-xl border border-slate-800/80 grid grid-cols-1 lg:grid-cols-2 gap-6">
+    
+    <div class="space-y-4">
+        <h3 class="font-bold text-white text-lg">Simulation Aérodynamique (OpenFOAM)</h3>
+        <p class="text-xs text-tech-textMuted italic">Projet : Analyse des forces aérodynamiques</p>
+        
+        <p class="text-sm text-slate-300 leading-relaxed">
+            Simulation numérique d'un écoulement stationnaire autour d'un véhicule. 
+            <strong>Objectif :</strong> Déterminer les forces de portance et de traînée pour établir le ratio aérodynamique. 
+            <br><br>
+            <strong>Méthodologie :</strong> Maillage avec <em>snappyHexMesh</em>, résolution en régime laminaire stationnaire via le solveur <em>simpleFoam</em>.
+        </p>
+
+        <div class="bg-tech-black/80 p-4 rounded-xl border border-slate-800/80 space-y-2">
+            <span class="text-[10px] uppercase font-mono text-slate-400 block font-bold">Résultats & Analyse</span>
+            <ul class="text-xs text-slate-400 list-disc list-inside space-y-1">
+                <li>Traînée = 2x Portance.</li>
+                <li>Forces périodiques identifiées.</li>
+                <li><strong>Conclusion :</strong> Passage au régime <em>unsteady</em> nécessaire pour extraire précisément le nombre de Strouhal.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="flex flex-col gap-4">
+        <img src="voit1.png" alt="Simulation CFD 1" class="w-full h-32 object-cover rounded-lg border border-slate-700">
+        <img src="voit2.png" alt="Simulation CFD 2" class="w-full h-32 object-cover rounded-lg border border-slate-700">
+        
+        <a href="Projet-Openfoam.pdf" target="_blank" class="w-full text-center py-2 bg-tech-blue/20 hover:bg-tech-blue/35 border border-tech-blue/45 text-white text-xs font-semibold rounded-lg transition duration-150">
+            Voir la présentation
+        </a>
+    </div>
+<div class="p-6 bg-tech-dark rounded-xl border border-slate-800/80 grid grid-cols-1 lg:grid-cols-2 gap-6">
+    
+    <div class="space-y-4">
+        <h3 class="font-bold text-white text-lg">Dimensionnement d'ombrière (Abaqus)</h3>
+        <span class="inline-block px-2 py-1 bg-tech-cyan/10 border border-tech-cyan/30 text-tech-cyan text-[10px] rounded uppercase tracking-widest font-mono">
+            Projet en binôme
+        </span>
+        
+        <div class="space-y-2">
+            <p class="text-xs text-tech-cyan font-bold uppercase tracking-wider">Contexte & Objectif</p>
+            <p class="text-sm text-slate-300 leading-relaxed">
+                Dimensionnement d'une structure métallique de parking photovoltaïque pour garantir sa tenue face aux charges permanentes (vent, neige, poids propre). Optimisation structurelle pour réduire la masse tout en respectant les critères de résistance.
+            </p>
+        </div>
+
+        <div class="bg-tech-black/80 p-4 rounded-xl border border-slate-800/80 space-y-2">
+            <span class="text-[10px] uppercase font-mono text-slate-400 block font-bold">Méthodologie & Résultats</span>
+            <ul class="text-xs text-slate-400 list-disc list-inside space-y-1">
+                <li>Approche 2D (prédimensionnement) vers modélisation 3D globale.</li>
+                <li>Détection de phénomènes de flambement (critiques en 3D).</li>
+                <li><strong>Final retenu :</strong> IPE400 (principales), IPE200 (transverses), tubes Ø60mm (ép. 1mm).</li>
+                <li>Perspectives : Analyse modale et calcul de flambement linéaire (Buckle).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="flex flex-col gap-4">
+        <img src="omb1.png" alt="Analyse 2D Ombrière" class="w-full h-32 object-cover rounded-lg border border-slate-700">
+        <img src="omb2.png" alt="Analyse 3D et résultats" class="w-full h-32 object-cover rounded-lg border border-slate-700">
+        
+        <a href="Ombrière_Abaqus.pdf" target="_blank" class="w-full text-center py-2 bg-tech-blue/20 hover:bg-tech-blue/35 border border-tech-blue/45 text-white text-xs font-semibold rounded-lg transition duration-150">
+            Voir le rapport complet
+        </a>
+    </div>
 </div>
 
                      
           
 
-               <div class="bg-slate-900 p-6 rounded-lg border border-slate-800">
-                    <h3 class="font-bold text-blue-400">Méthodes des Éléments Finis (MEF)</h3>
-                    <p class="text-sm text-slate-400 my-2">Résolution numérique et affichage des résultats.</p>
-                   <p class="text-sm text-slate-400 my-2">Projet réalisé en binôme : mise en œuvre d'algorithmes de résolution numérique pour des problèmes de mécanique, avec une attention particulière portée à la discrétisation et à la visualisation des champs de contraintes.</p>
-                    <a href="Affiche_MEF.pdf" class="text-xs underline block"><i class="fa-solid fa-file-pdf"></i> Affiche MEF</a>
-                </div>
+               <div class="p-6 bg-tech-dark rounded-xl border border-slate-800/80 grid grid-cols-1 lg:grid-cols-2 gap-6">
+    
+    <div class="space-y-4">
+        <h3 class="font-bold text-white text-lg">Méthode des Éléments Finis (MEF)</h3>
+        
+        <span class="inline-block px-2 py-1 bg-tech-cyan/10 border border-tech-cyan/30 text-tech-cyan text-[10px] rounded uppercase tracking-widest font-mono">
+            Projet en binôme
+        </span>
 
-                <div class="bg-slate-900 p-6 rounded-lg border border-slate-800">
-                    <h3 class="font-bold text-blue-400">Volumes Finis & Loi de Darcy</h3>
-                    <p class="text-sm text-slate-400 my-2">Étude des écoulements en milieu poreux.</p>
-                    <p class="text-sm text-slate-400 my-2">Projet réalisé en groupe : analyse théorique et numérique des écoulements en milieux poreux, centrée sur la modélisation des transferts de fluides et la résolution par la méthode des volumes finis.</p>
-                    <a href="1.pdf" class="text-xs underline block"><i class="fa-solid fa-file-pdf"></i> Loi de Darcy (Partie 1)</a>
-                    <a href="2.pdf" class="text-xs underline block"><i class="fa-solid fa-file-pdf"></i> Loi de Darcy (Partie 2)</a>
-                </div>
+        <div class="space-y-2">
+            <p class="text-xs text-tech-cyan font-bold uppercase tracking-wider">Objectifs & Méthodologie</p>
+            <p class="text-sm text-slate-300 leading-relaxed">
+                Résolution de problèmes non-linéaires via une formulation faible. Mise en œuvre d'algorithmes itératifs (point fixe) après discrétisation par éléments finis.
+            </p>
+        </div>
+
+        <div class="bg-tech-black/80 p-4 rounded-xl border border-slate-800/80 space-y-2">
+            <span class="text-[10px] uppercase font-mono text-slate-400 block font-bold">Analyse & Résultats</span>
+            <ul class="text-xs text-slate-400 list-disc list-inside space-y-1">
+                <li>Étude de convergence : ordre de convergence ~2.</li>
+                <li>Analyse rigoureuse de l'erreur numérique.</li>
+                <li>Validation sur cas tests numériques.</li>
+                <li><strong>Conclusion :</strong> Validation de l'efficacité de l'approche itérative.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="flex flex-col gap-4">
+        <img src="mef.png" alt="Affiche projet MEF" class="w-full h-auto object-contain rounded-lg border border-slate-700">
+        
+        <a href="Affiche_MEF.pdf" target="_blank" class="w-full text-center py-2 bg-tech-blue/20 hover:bg-tech-blue/35 border border-tech-blue/45 text-white text-xs font-semibold rounded-lg transition duration-150">
+            Voir l'affiche (PDF)
+        </a>
+    </div>
+</div>
+
+                <div class="p-6 bg-tech-dark rounded-xl border border-slate-800/80 grid grid-cols-1 lg:grid-cols-2 gap-6">
+    
+    <div class="space-y-4">
+        <h3 class="font-bold text-white text-lg">Volumes Finis & Loi de Darcy</h3>
+        
+        <span class="inline-block px-2 py-1 bg-tech-cyan/10 border border-tech-cyan/30 text-tech-cyan text-[10px] rounded uppercase tracking-widest font-mono">
+            Projet en groupe
+        </span>
+
+        <div class="space-y-2">
+            <p class="text-xs text-tech-cyan font-bold uppercase tracking-wider">Objectifs & Méthodologie</p>
+            <p class="text-sm text-slate-300 leading-relaxed">
+                Analyse théorique et numérique des écoulements en milieux poreux. Modélisation des transferts de fluides via la loi de Darcy et résolution par la méthode des Volumes Finis (FVM).
+            </p>
+        </div>
+
+        <div class="bg-tech-black/80 p-4 rounded-xl border border-slate-800/80 space-y-2">
+            <span class="text-[10px] uppercase font-mono text-slate-400 block font-bold">Rapports techniques</span>
+            <div class="flex flex-col gap-2">
+                <a href="1.pdf" target="_blank" class="text-xs text-tech-cyan hover:underline">
+                    <i class="fa-solid fa-file-pdf mr-2"></i> Loi de Darcy (Partie 1)
+                </a>
+                <a href="2.pdf" target="_blank" class="text-xs text-tech-cyan hover:underline">
+                    <i class="fa-solid fa-file-pdf mr-2"></i> Loi de Darcy (Partie 2)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col gap-4">
+        <img src="1.png" alt="Simulation milieu poreux 1" class="w-full h-32 object-cover rounded-lg border border-slate-700">
+        <img src="2.png" alt="Simulation milieu poreux 2" class="w-full h-32 object-cover rounded-lg border border-slate-700">
+    </div>
+</div>
 
                 <div class="bg-slate-900 p-6 rounded-lg border border-slate-800">
                     <h3 class="font-bold text-blue-400">Architecture Navale (Projet Richelieu)</h3>
