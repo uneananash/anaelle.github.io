@@ -583,14 +583,19 @@
         </div>
     </div>
 
-    <div class="flex flex-col gap-4">
-        <img src="omb1png.png" alt="Analyse 2D Ombrière" class="w-full h-32 object-cover rounded-lg border border-slate-700">
-        <img src="omb2.png" alt="Analyse 3D et résultats" class="w-full h-32 object-cover rounded-lg border border-slate-700">
-        
-        <a href="Ombrière_Abaqus.pdf" target="_blank" class="w-full text-center py-2 bg-tech-blue/20 hover:bg-tech-blue/35 border border-tech-blue/45 text-white text-xs font-semibold rounded-lg transition duration-150">
-            Voir le rapport complet
-        </a>
+ <!-- Partie Images et Bouton -->
+<div class="space-y-4">
+    <!-- Les deux images côte à côte avec une plus grande hauteur (h-64) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <img src="omb1png.png" alt="Analyse 2D Ombrière" class="w-full h-64 object-cover rounded-lg border border-slate-700">
+        <img src="omb2.png" alt="Analyse 3D et résultats" class="w-full h-64 object-cover rounded-lg border border-slate-700">
     </div>
+    
+    <!-- Bouton pour voir le rapport -->
+    <a href="Ombrière_Abaqus.pdf" target="_blank" class="w-full text-center py-2 bg-tech-blue/20 hover:bg-tech-blue/35 border border-tech-blue/45 text-white text-xs font-semibold rounded-lg transition duration-150 block">
+        Voir le rapport complet
+    </a>
+</div>
 </div>
 
                      
@@ -624,7 +629,7 @@
     </div>
 
     <div class="flex flex-col gap-4">
-        <img src="mef.png" alt="Affiche projet MEF" class="w-full h-auto object-contain rounded-lg border border-slate-700">
+      <img src="mef.png" alt="Affiche projet MEF" class="w-full max-h-64 object-contain rounded-lg border border-slate-700">
         
         <a href="Affiche_MEF.pdf" target="_blank" class="w-full text-center py-2 bg-tech-blue/20 hover:bg-tech-blue/35 border border-tech-blue/45 text-white text-xs font-semibold rounded-lg transition duration-150">
             Voir l'affiche (PDF)
