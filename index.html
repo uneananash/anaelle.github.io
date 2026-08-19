@@ -582,7 +582,7 @@
     </div>
 
     <div class="flex flex-col gap-4">
-        <img src="omb1.png" alt="Analyse 2D Ombrière" class="w-full h-32 object-cover rounded-lg border border-slate-700">
+        <img src="omb1png.png" alt="Analyse 2D Ombrière" class="w-full h-32 object-cover rounded-lg border border-slate-700">
         <img src="omb2.png" alt="Analyse 3D et résultats" class="w-full h-32 object-cover rounded-lg border border-slate-700">
         
         <a href="Ombrière_Abaqus.pdf" target="_blank" class="w-full text-center py-2 bg-tech-blue/20 hover:bg-tech-blue/35 border border-tech-blue/45 text-white text-xs font-semibold rounded-lg transition duration-150">
@@ -594,7 +594,7 @@
                      
           
 
-               <div class="p-6 bg-tech-dark rounded-xl border border-slate-800/80 grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div class="p-6 bg-tech-dark rounded-xl border border-slate-800/80 w-full space-y-6">
     
     <div class="space-y-4">
         <h3 class="font-bold text-white text-lg">Méthode des Éléments Finis (MEF)</h3>
@@ -630,7 +630,7 @@
     </div>
 </div>
 
-                <div class="p-6 bg-tech-dark rounded-xl border border-slate-800/80 grid grid-cols-1 lg:grid-cols-2 gap-6">
+               <div class="p-6 bg-tech-dark rounded-xl border border-slate-800/80 w-full space-y-6">
     
     <div class="space-y-4">
         <h3 class="font-bold text-white text-lg">Volumes Finis & Loi de Darcy</h3>
@@ -665,7 +665,7 @@
     </div>
 </div>
 
-               <div class="p-6 bg-tech-dark rounded-xl border border-slate-800/80 grid grid-cols-1 lg:grid-cols-2 gap-6">
+             <div class="p-6 bg-tech-dark rounded-xl border border-slate-800/80 w-full space-y-6">
     
     <div class="space-y-4">
         <h3 class="font-bold text-white text-lg">Architecture Navale : Cuirassé Richelieu</h3>
@@ -715,69 +715,9 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    <div class="lg:col-span-7 space-y-6 text-sm text-slate-300 leading-relaxed">
-                        
-                        <div class="space-y-1.5">
-                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 rounded-full bg-tech-cyan"></span> Contexte et Objectif
-                            </h4>
-                            <p class="text-xs pl-3.5 text-slate-300">
-                                Dans le cadre du thème national d'études « Le Sport », j'ai choisi de modéliser et d'analyser la stabilité d'un Stand-up Paddle, une discipline sportive que je pratique régulièrement. Bien que la physique de flottaison de la planche semble simple au premier abord, elle fait l'objet de couplages hydrostatiques et géométriques complexes dès lors qu'un angle de roulis et de tangage apparaît.
-                            </p>
-                        </div>
+             
 
-                        <div class="space-y-1.5">
-                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 rounded-full bg-tech-cyan"></span> Technologies Utilisées
-                            </h4>
-                            <p class="text-xs pl-3.5 text-slate-300">
-                                Pour la modélisation analytique, la planche a été représentée de manière simplifiée par un rectangle de polystyrène idéal. Pour résoudre l'évolution des forces d'excitation, j'ai codé l'ensemble de l'algorithme sous **Python** (<span class="font-mono text-tech-cyan text-[11px]">NumPy</span>, <span class="font-mono text-tech-cyan text-[11px]">Matplotlib</span>) en intégrant les équations de pression hydrostatiques d'Archimède.
-                            </p>
-                        </div>
-
-                        <div class="space-y-1.5">
-                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 rounded-full bg-tech-cyan"></span> Rôle et Contributions
-                            </h4>
-                            <p class="text-xs pl-3.5 text-slate-300">
-                                J'ai conduit l'ensemble des essais de caractérisation dynamique. J'ai d'abord cherché expérimentalement la **période propre** de notre modèle réduit en le lâchant et en enregistrant ses oscillations libres dans le vide (l'air). J'ai ensuite réalisé la même série d'expériences d'oscillations libres dans l'eau, ce qui a nécessité d'importants et rigoureux **calculs d'incertitudes et de propagation d'erreurs** expérimentales. Enfin, j'ai programmé sous Python la géométrie de la planche inclinée pour suivre *exactement* la ligne d'eau théorique à chaque incrément d'angle et définir précisément à quel angle critique la planche bascule irréversiblement (le moment du « plouf »).
-                            </p>
-                        </div>
-
-                        <div class="space-y-1.5">
-                            <h4 class="text-xs font-display font-bold text-white uppercase tracking-widest flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 rounded-full bg-tech-cyan"></span> Résultats et Réalisations
-                            </h4>
-                            <p class="text-xs pl-3.5 text-slate-300">
-                                Notre code a permis d'extraire la valeur limite d'angle de gîte sans chavirage. La confrontation entre la période propre théorique modélisée et la période propre mesurée en bassin (après calcul d'erreurs) a montré une excellente cohérence, validant notre modèle de stabilité.
-                            </p>
-                        </div>
-
-                    </div>
-
-                    <div class="lg:col-span-5 space-y-4">
-                        <div class="border border-slate-800 rounded-xl overflow-hidden bg-tech-black/90 relative group aspect-video flex flex-col items-center justify-center p-4 text-center">
-                            <img src="image4.png" alt="TIPE Paddleboard" class="hidden w-full h-full object-cover" onerror="this.style.display='none';">
-                            <div class="text-slate-500 hover:text-slate-400 transition duration-150 flex flex-col items-center">
-                                <i class="fa-solid fa-person-swimming text-3xl mb-3 text-tech-cyan/40"></i>
-                                <span class="text-xs font-semibold text-white">image4.png</span>
-                                <p class="text-[10px] text-tech-textMuted max-w-[250px] mt-1 leading-normal font-mono">
-                                    Courbes de stabilité et mesures de flottaison sous Python.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="flex justify-between items-center bg-tech-black/80 p-4 rounded-xl border border-slate-800/80">
-                            <div class="text-xs">
-                                <span class="text-white block font-medium">Livrable disponible</span>
-                                <span class="text-tech-textMuted font-mono text-[9px]">rapport-tipe.pdf</span>
-                            </div>
-                            <a href="rapport-tipe.pdf" target="_blank" class="px-4 py-2 bg-tech-blue hover:bg-blue-600 text-white text-xs font-semibold rounded-lg transition duration-150">
-                                <i class="fa-regular fa-file-pdf mr-1"></i> Consulter le TIPE
-                            </a>
-                        </div>
-                    </div>
+                   
                 </div>
             </article>
         </section>
